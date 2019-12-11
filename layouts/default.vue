@@ -18,9 +18,14 @@
         </a>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-menu">
         <div class="navbar-end">
-          <a class="navbar-item button is-primary">
+          <a
+            href="https://bulma.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="navbar-item button is-primary"
+          >
             Made with Bulma
           </a>
         </div>
