@@ -7,125 +7,123 @@
     <p>{{ comment }}</p>
 
     <table class="table is-bordered">
-      <thead>
-        <tr>
-          <th
-            v-for="dayName in dayNames"
-            :key="dayName"
-            class="week"
-          >
-            {{ dayName }}
-          </th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr
-          v-for="index in [0, 1, 2]"
-          :key="index"
+      <tr>
+        <th
+          v-for="dayName in dayNames"
+          :key="dayName"
+          class="week"
         >
-          <th
-            v-for="day in days.slice((7 * index), (7 + (7 * index)))"
-            :key="day.date"
-            class="week"
-          >
-            <p class="tag is-primary is-light is-medium">
-              {{ day.date }}
-            </p>
+          {{ dayName }}
+        </th>
+      </tr>
 
-            <article class="media">
-              <div class="media-content">
-                <img
-                  class="image is-48x48"
-                  :src="day.authorImageUrl"
-                >
+      <tr
+        v-for="index in [0, 1, 2]"
+        :key="index"
+      >
+        <td
+          v-for="day in days.slice((7 * index), (7 + (7 * index)))"
+          :key="day.date"
+          class="week"
+        >
+          <p class="tag is-primary is-light is-medium">
+            {{ day.date }}
+          </p>
 
-                <a
-                  :href="`https://qiita.com/${day.authorName}`"
+          <article class="media">
+            <div class="media-content">
+              <img
+                class="image is-48x48"
+                :src="day.authorImageUrl"
+                :alt="day.authorName"
+              >
+
+              <a
+                :href="`https://qiita.com/${day.authorName}`"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="has-text-weight-normal is-size-6 has-text-info"
+              >
+                {{ day.authorName }}
+              </a>
+
+              <div class="media content">
+                <a v-if="day.articleUrl !== null"
+                  :href="day.articleUrl"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="has-text-weight-normal is-size-6 has-text-info"
+                  class="has-text-info is-6"
                 >
-                  {{ day.authorName }}
+                  {{ day.comment }}
                 </a>
 
-                <div class="media content">
-                  <a v-if="day.articleUrl !== null"
-                    :href="day.articleUrl"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="has-text-info is-6"
-                  >
-                    {{ day.comment }}
-                  </a>
-
-                  <p v-else
-                    class="has-text-dark is-6"
-                  >
-                    {{ day.comment }}
-                  </p>
-                </div>
-              </div>
-            </article>
-          </th>
-        </tr>
-
-        <tr>
-          <th
-            v-for="day in days.slice(21)"
-            :key="day.date"
-            class="week"
-          >
-            <p class="tag is-primary is-light is-medium">
-              {{ day.date }}
-            </p>
-
-            <article class="media">
-              <div class="media-content">
-                <img
-                  class="image is-48x48"
-                  :src="day.authorImageUrl"
+                <p v-else
+                  class="has-text-dark is-6"
                 >
+                  {{ day.comment }}
+                </p>
+              </div>
+            </div>
+          </article>
+        </td>
+      </tr>
 
-                <a
-                  :href="`https://qiita.com/${day.authorName}`"
+      <tr>
+        <td
+          v-for="day in days.slice(21)"
+          :key="day.date"
+          class="week"
+        >
+          <p class="tag is-primary is-light is-medium">
+            {{ day.date }}
+          </p>
+
+          <article class="media">
+            <div class="media-content">
+              <img
+                class="image is-48x48"
+                :src="day.authorImageUrl"
+                :alt="day.authorName"
+              >
+
+              <a
+                :href="`https://qiita.com/${day.authorName}`"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="has-text-weight-normal is-size-6 has-text-info"
+              >
+                {{ day.authorName }}
+              </a>
+
+              <div class="media content">
+                <a v-if="day.articleUrl !== null"
+                  :href="day.articleUrl"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="has-text-weight-normal is-size-6 has-text-info"
+                  class="has-text-info is-6"
                 >
-                  {{ day.authorName }}
+                  {{ day.comment }}
                 </a>
 
-                <div class="media content">
-                  <a v-if="day.articleUrl !== null"
-                    :href="day.articleUrl"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="has-text-info is-6"
-                  >
-                    {{ day.comment }}
-                  </a>
-
-                  <p v-else
-                    class="has-text-dark is-6"
-                  >
-                    {{ day.comment }}
-                  </p>
-                </div>
+                <p v-else
+                  class="has-text-dark is-6"
+                >
+                  {{ day.comment }}
+                </p>
               </div>
-            </article>
-          </th>
+            </div>
+          </article>
+        </td>
 
-          <th
-            v-for="date in [26, 27, 28]"
-            :key="date"
-          >
-            <p class="tag is-light is-medium">
-              {{ date }}
-            </p>
-          </th>
-        </tr>
-      </tbody>
+        <td
+          v-for="date in [26, 27, 28]"
+          :key="date"
+        >
+          <p class="tag is-light is-medium">
+            {{ date }}
+          </p>
+        </td>
+      </tr>
     </table>
 
     <p>※ このページはレスポンシブ対応していません。デスクトップサイズの画面でご覧ください。</p>
